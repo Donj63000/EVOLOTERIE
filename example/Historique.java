@@ -1,6 +1,7 @@
 package org.example;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -8,6 +9,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,6 +24,7 @@ public class Historique extends Stage {
     private final ObservableList<String> lignes = FXCollections.observableArrayList();
     private final ListView<String> listView;
     private final Gains gains;
+    private static final Path FILE = Path.of("loterie-historique.txt");
     private static final DateTimeFormatter FORMATTER =
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -43,6 +48,12 @@ public class Historique extends Stage {
         root.setPadding(new Insets(10));
         Scene scene = new Scene(root, 400, 300);
         setScene(scene);
+
+        // Charge l'historique depuis le fichier s'il existe
+        loadHistory();
+
+        // Sauvegarde automatique à chaque modification
+        lignes.addListener((ListChangeListener<String>) c -> saveHistory());
     }
 
     /** Ajoute une ligne dans l'historique pour le tirage indiqué. */
@@ -59,5 +70,23 @@ public class Historique extends Stage {
             sb.append("Perdu");
         }
         lignes.add(sb.toString());
+    }
+
+    private void loadHistory() {
+        try {
+            if (Files.exists(FILE)) {
+                lignes.setAll(Files.readAllLines(FILE));
+            }
+        } catch (IOException ex) {
+            System.err.println("Impossible de relire l'historique : " + ex.getMessage());
+        }
+    }
+
+    private void saveHistory() {
+        try {
+            Files.write(FILE, lignes);
+        } catch (IOException ex) {
+            System.err.println("Impossible de sauvegarder l'historique : " + ex.getMessage());
+        }
     }
 }
