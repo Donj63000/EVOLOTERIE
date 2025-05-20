@@ -84,3 +84,6 @@ Les classes sont regroupées dans le package `org.example`.
 ## Licence
 
 Ce projet est fourni à titre d'exemple et sans garantie. Vous pouvez le modifier librement pour vos besoins.
+
+
+Copyright EVOLUTION D.129 BOUNE COCA-COLA
