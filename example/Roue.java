@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -82,6 +83,8 @@ public class Roue {
     private String[] seatArrangement;
     private ParallelTransition winnerFx;
     private Polygon curseur;
+
+    private Consumer<String> resultCallback;
 
     // Variables pour le drag & drop
     private double dragAnchorX, dragAnchorY;
@@ -149,6 +152,10 @@ public class Roue {
     public void resetPosition() {
         rootPane.setTranslateX(0);
         rootPane.setTranslateY(0);
+    }
+
+    public void setOnSpinFinished(Consumer<String> cb) {
+        this.resultCallback = cb;
     }
 
     // ---------------------------------------------------------------------
@@ -248,6 +255,9 @@ public class Roue {
                 resultat.setMessage(pseudo + " a gagné !");
             } else {
                 resultat.setMessage("Perdu !");
+            }
+            if (resultCallback != null) {
+                resultCallback.accept(pseudo);
             }
             playWinnerHighlight(winningIndex);
         });

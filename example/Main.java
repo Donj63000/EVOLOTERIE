@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import org.example.Historique;
+
 public class Main extends Application {
 
     // Dimensions de la fenêtre
@@ -62,6 +64,7 @@ public class Main extends Application {
 
         // === 3) Gains (droite) ===
         Gains gains = new Gains(users.getParticipants());
+        Historique historique = new Historique(gains);
         VBox rightBox = new VBox(10, gains.getRootPane());
         // Padding-top = 0 => ils sont “collés” sous le titre
         rightBox.setPadding(new Insets(0, 20, 10, 10));
@@ -73,6 +76,7 @@ public class Main extends Application {
 
         // === 4) Roue au centre ===
         Roue roue = new Roue(resultat);
+        roue.setOnSpinFinished(pseudo -> historique.logResult(pseudo));
         StackPane centerPane = new StackPane(roue.getRootPane());
         centerPane.setAlignment(Pos.CENTER);
         centerPane.setMaxSize(WHEEL_RADIUS * 2 + 50, WHEEL_RADIUS * 2 + 50);
@@ -155,6 +159,10 @@ public class Main extends Application {
             resultat.setMessage("Nouvelle loterie prête");
         });
 
+        // Bouton Historique
+        Button historyButton = new Button("Historique");
+        historyButton.setOnAction(e -> historique.show());
+
         // === Nouveau bouton "Plein écran" ===
         Button fullScreenButton = new Button("Plein écran");
         fullScreenButton.setOnAction(e -> {
@@ -169,12 +177,14 @@ public class Main extends Application {
         Theme.styleButton(resetButton);
         Theme.styleButton(saveButton);
         Theme.styleButton(cleanButton);
+        Theme.styleButton(historyButton);
         Theme.styleButton(fullScreenButton);
 
         HBox bottomBox = new HBox(30,
                 spinButton, optionsButton, resetButton,
                 saveButton, cleanButton,
-                fullScreenButton  // on l'ajoute ici
+                fullScreenButton,
+                historyButton
         );
         bottomBox.setAlignment(Pos.CENTER);
         bottomBox.setPadding(new Insets(16, 0, 20, 0));
