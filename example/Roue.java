@@ -237,14 +237,11 @@ public class Roue {
         int winningIndex = ThreadLocalRandom.current().nextInt(total);
 
         double angleStep  = 360.0 / total;
-        double extraTurns = 3.0 * OptionRoue.getSpinSpeed();  // nombre de tours entiers
-        // Calcule l'angle final à atteindre. On souhaite que le centre du
-        // secteur gagnant se retrouve exactement sous le curseur situé en haut
-        // de la roue (à 270°). Chaque tour complet est ajouté pour l'animation
-        // puis on soustrait la position du centre du secteur courant.
+        double extraTurns = 3.0;  // nombre de tours entiers
         double target     = (360 * extraTurns)
-                + 270
-                - ((winningIndex + 0.5) * angleStep);
+                + (winningIndex * angleStep)
+                + (angleStep / 2.0)
+                - 90;  // on veut atterrir face au curseur
 
         double start = groupSecteurs.getRotate();
         rotateTransition.setNode(groupSecteurs);
