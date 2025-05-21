@@ -1,6 +1,26 @@
 # EVOLOTERIE
 
-EVOLOTERIE est une petite application JavaFX simulant une loterie pour la guilde **EVOLUTION**. Elle permet d'entrer les participants avec leurs mises, de configurer des gains et d'animer une roue de la fortune pour déterminer un gagnant. Le projet a été conçu comme un exemple didactique.
+EVOLOTERIE est une petite application JavaFX simulant une loterie pour la guilde **EVOLUTION**. Elle permet d'entrer les participants avec leurs mises, de configurer les gains et d'animer une roue de la fortune pour déterminer un gagnant. Le projet a été conçu comme un exemple didactique.
+
+## Prise en main rapide
+
+```bash
+git clone <repo>
+cd EVOLOTERIE
+mvn javafx:run        # lance l'application en mode développement
+mvn package           # construit le jar autonome
+java -jar target/demoloterie.jar
+```
+
+Le projet nécessite Java 21 et Maven. Aucune base de données n'est requise, toutes les informations sont stockées dans des fichiers texte.
+
+## Fonctionnalités principales
+
+- Gestion interactive des participants et de leurs mises
+- Configuration de la cagnotte et des objets à gagner
+- Roue animée entièrement paramétrable (tickets perdants et durée de rotation)
+- Historique des tirages persistant
+- Sauvegarde et restauration automatiques
 
 ## Fonctionnement général
 
@@ -17,6 +37,15 @@ Le point d'entrée est `Launcher` qui appelle `Main`. Le fichier d'arrière-plan
 Les paramètres de la roue (nombre de tickets perdants et durée de rotation) sont modifiables via la fenêtre `OptionRoue`.
 
 Les classes principales sont localisées dans le dossier `example/` et appartiennent au package `org.example`.
+
+## Configuration
+
+Depuis l'application il est possible d'ouvrir la fenêtre **OptionRoue** pour ajuster :
+
+- le nombre de tickets perdants affichés sur la roue ;
+- la durée de rotation avant de révéler le gagnant.
+
+Ces réglages sont conservés pour la session en cours et permettent de personnaliser la loterie à chaque utilisation.
 
 ## Sauvegarde et historique
 
@@ -57,7 +86,8 @@ Extrait de la méthode `save` montrant le format très simple utilisé :
 
 ## Compilation
 
-Le projet utilise Maven avec Java 21 et JavaFX 21. Pour exécuter l'application en développement :
+Le projet utilise Maven avec Java 21 et JavaFX 21.
+Pour exécuter l'application en développement :
 
 ```bash
 mvn javafx:run
@@ -74,6 +104,9 @@ Le jar produit contient toutes les dépendances (plugin Shade). Vous pouvez alor
 ```bash
 java -jar target/demoloterie.jar
 ```
+
+Par défaut, la configuration Maven cible la plate-forme Windows (`javafx.platform=win`).
+Pour construire pour une autre plate-forme (linux, mac), modifiez cette propriété dans `pom.xml` avant d'exécuter `mvn package`.
 
 ## Structure des sources
 
