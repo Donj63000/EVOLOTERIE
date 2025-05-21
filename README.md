@@ -34,7 +34,7 @@ L'interface graphique est constituée de plusieurs panneaux :
 
 Le point d'entrée est `Launcher` qui appelle `Main`. Le fichier d'arrière-plan se trouve dans `resources/img.png`.
 
-Les paramètres de la roue (nombre de tickets perdants et durée de rotation) sont modifiables via la fenêtre `OptionRoue`.
+Les paramètres de la roue (nombre de tickets perdants, durée de rotation et vitesse initiale) sont modifiables via la fenêtre `OptionRoue`.
 
 Les classes principales sont localisées dans le dossier `example/` et appartiennent au package `org.example`.
 
@@ -44,6 +44,7 @@ Depuis l'application il est possible d'ouvrir la fenêtre **OptionRoue** pour aj
 
 - le nombre de tickets perdants affichés sur la roue ;
 - la durée de rotation avant de révéler le gagnant.
+- la vitesse de rotation de la roue.
 
 Ces réglages sont conservés pour la session en cours et permettent de personnaliser la loterie à chaque utilisation.
 
