@@ -248,6 +248,7 @@ public class Roue {
         rotateTransition.setFromAngle(start);
         rotateTransition.setToAngle(start + target);
         rotateTransition.setInterpolator(Interpolator.EASE_OUT);
+        rotateTransition.setRate(OptionRoue.getSpinSpeed());
 
         rotateTransition.setOnFinished(e -> {
             String pseudo = seatArrangement[winningIndex];
