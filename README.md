@@ -44,7 +44,7 @@ Depuis l'application il est possible d'ouvrir la fenêtre **OptionRoue** pour aj
 
 - le nombre de tickets perdants affichés sur la roue ;
 - la durée de rotation avant de révéler le gagnant.
-- la vitesse de rotation de la roue.
+- la vitesse de rotation de la roue (réglable via un curseur, sans influer sur la position finale).
 
 Ces réglages sont conservés pour la session en cours et permettent de personnaliser la loterie à chaque utilisation.
 

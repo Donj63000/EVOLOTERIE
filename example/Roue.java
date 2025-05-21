@@ -237,7 +237,9 @@ public class Roue {
         int winningIndex = ThreadLocalRandom.current().nextInt(total);
 
         double angleStep  = 360.0 / total;
-        double extraTurns = 3.0;  // nombre de tours entiers
+        // Multiplie le nombre de tours par la vitesse choisie, puis arrondit
+        // pour rester sur un multiple de 360° afin de toujours pointer le curseur
+        double extraTurns = Math.round(3.0 * OptionRoue.getSpinSpeed());
         double target     = (360 * extraTurns)
                 + (winningIndex * angleStep)
                 + (angleStep / 2.0)
