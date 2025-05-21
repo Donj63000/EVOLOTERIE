@@ -154,6 +154,15 @@ public class Gains {
         return root;
     }
 
+    public int getExtraKamas() {
+        return extraKamas.get();
+    }
+
+    public void setExtraKamas(int value) {
+        extraKamas.set(value);
+        txtExtra.setText(String.valueOf(value));
+    }
+
     public int getTotalKamas() {
         // On récupère la valeur brute (sans espaces) via la regex
         return Integer.parseInt(lblTotal.getText().replaceAll("[^0-9]", ""));
