@@ -62,7 +62,7 @@ public class Historique extends Stage {
         sb.append(LocalDateTime.now().format(FORMATTER)).append(" - ");
         if (pseudo != null) {
             sb.append("Vainqueur : ").append(pseudo).append(" - Gains : ")
-              .append(gains.getTotalKamas()).append(" k");
+                    .append(gains.getTotalKamas()).append(" k");
             if (!gains.getObjets().isEmpty()) {
                 sb.append(" + ").append(String.join(", ", gains.getObjets()));
             }
