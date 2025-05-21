@@ -88,12 +88,20 @@ public class Main extends Application {
             if (Files.exists(f)) {
                 var lines = Files.readAllLines(f);
                 boolean objetsPart = false;
+                boolean bonusPart  = false;
                 for (String line : lines) {
                     if (line.startsWith("#")) {
                         objetsPart = line.startsWith("#Objets");
+                        bonusPart  = line.startsWith("#Bonus");
                         continue;
                     }
-                    if (objetsPart) {
+                    if (bonusPart) {
+                        try {
+                            gains.setExtraKamas(Integer.parseInt(line.trim()));
+                        } catch (NumberFormatException ignore) {
+                            gains.setExtraKamas(0);
+                        }
+                    } else if (objetsPart) {
                         gains.getObjets().add(line);
                     } else {
                         String[] parts = line.split(";", 3);
@@ -144,7 +152,9 @@ public class Main extends Application {
         Button saveButton = new Button("Sauvegarder état");
         saveButton.setOnAction(e -> {
             try {
-                Save.save(users.getParticipants(), gains.getObjets());
+                Save.save(users.getParticipants(),
+                        gains.getObjets(),
+                        gains.getExtraKamas());
                 resultat.setMessage("État sauvegardé ✔");
             } catch (IOException ex) {
                 resultat.setMessage("Erreur de sauvegarde ✖");
@@ -155,6 +165,7 @@ public class Main extends Application {
         Button cleanButton = new Button("Nettoyer");
         cleanButton.setOnAction(e -> {
             Save.reset(users.getParticipants(), gains.getObjets());
+            gains.setExtraKamas(0);
             roue.updateWheelDisplay(users.getParticipantNames());
             resultat.setMessage("Nouvelle loterie prête");
         });

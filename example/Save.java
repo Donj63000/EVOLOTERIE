@@ -21,7 +21,8 @@ public final class Save {
 
     /* ---------- Sauvegarde ---------- */
     public static void save(ObservableList<Participant> participants,
-                            ObservableList<String> objets) throws IOException {
+                            ObservableList<String> objets,
+                            int extraKamas) throws IOException {
 
         StringBuilder sb = new StringBuilder("#Participants\n");
         for (Participant p : participants) {
@@ -35,6 +36,9 @@ public final class Save {
         for (String o : objets) {
             sb.append(o).append('\n');
         }
+
+        sb.append("#Bonus\n");
+        sb.append(extraKamas).append('\n');
 
         Files.writeString(FILE, sb.toString());
     }

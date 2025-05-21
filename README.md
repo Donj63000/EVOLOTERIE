@@ -22,7 +22,7 @@ Les classes principales sont localisées dans le dossier `example/` et appartien
 
 Deux fichiers texte sont utilisés afin de persister les données :
 
-- `loterie-save.txt` : état courant (participants et objets). Les méthodes `Save.save` et `Save.reset` gèrent ce fichier.
+- `loterie-save.txt` : état courant (participants et objets et bonus). Les méthodes `Save.save` et `Save.reset` gèrent ce fichier.
 - `loterie-historique.txt` : liste datée des tirages (gérée par `Historique`).
 
 Extrait de la méthode `save` montrant le format très simple utilisé :
@@ -32,7 +32,8 @@ Extrait de la méthode `save` montrant le format très simple utilisé :
 
     /* ---------- Sauvegarde ---------- */
     public static void save(ObservableList<Participant> participants,
-                            ObservableList<String> objets) throws IOException {
+                            ObservableList<String> objets,
+                            int extraKamas) throws IOException {
 
         StringBuilder sb = new StringBuilder("#Participants\n");
         for (Participant p : participants) {
@@ -46,6 +47,9 @@ Extrait de la méthode `save` montrant le format très simple utilisé :
         for (String o : objets) {
             sb.append(o).append('\n');
         }
+
+        sb.append("#Bonus\n");
+        sb.append(extraKamas).append('\n');
 
         Files.writeString(FILE, sb.toString());
     }
