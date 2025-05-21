@@ -43,8 +43,8 @@ Les classes principales sont localisées dans le dossier `example/` et appartien
 Depuis l'application il est possible d'ouvrir la fenêtre **OptionRoue** pour ajuster :
 
 - le nombre de tickets perdants affichés sur la roue ;
-- la durée de rotation avant de révéler le gagnant.
-- la vitesse de rotation de la roue.
+ - la durée de rotation avant de révéler le gagnant ;
+ - la vitesse de rotation de la roue (réglable via un curseur sans modifier la position finale).
 
 Ces réglages sont conservés pour la session en cours et permettent de personnaliser la loterie à chaque utilisation.
 
