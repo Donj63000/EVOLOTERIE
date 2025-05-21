@@ -249,6 +249,9 @@ public class Roue {
         rotateTransition.setToAngle(start + target);
         rotateTransition.setInterpolator(Interpolator.EASE_OUT);
 
+        // Ajuste la vitesse de lecture de l'animation
+        rotateTransition.setRate(OptionRoue.getSpinSpeed());
+
         rotateTransition.setOnFinished(e -> {
             String pseudo = seatArrangement[winningIndex];
             if (pseudo != null) {
