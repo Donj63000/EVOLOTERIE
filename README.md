@@ -8,7 +8,7 @@ L'application s'exécute avec **Java&nbsp;21**. Si vous ne disposez pas de Java 
 
 ### Windows
 
-1. Rendez-vous sur le site [Adoptium](https://adoptium.net/) ou un fournisseur d'OpenJDK.
+1. Rendez-vous sur le site Oracle ou un fournisseur d'OpenJDK.
 2. Téléchargez l'installateur de la version **JDK&nbsp;21** (64&nbsp;bits).
 3. Lancez l'installateur puis suivez les instructions jusqu'au bout.
 4. Une fois l'installation terminée, ouvrez un terminal (*Invite de commandes*) et tapez :
