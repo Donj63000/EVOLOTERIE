@@ -2,6 +2,45 @@
 
 EVOLOTERIE est une petite application JavaFX simulant une loterie pour la guilde **EVOLUTION**(Made By Coca IG). Elle permet d'entrer les participants avec leurs mises, de configurer les gains et d'animer une roue de la fortune pour déterminer un gagnant. Le projet a été conçu comme un exemple didactique.
 
+## Installation de Java
+
+L'application s'exécute avec **Java&nbsp;21**. Si vous ne disposez pas de Java sur votre ordinateur, suivez les étapes ci-dessous :
+
+### Windows
+
+1. Rendez-vous sur le site [Adoptium](https://adoptium.net/) ou un fournisseur d'OpenJDK.
+2. Téléchargez l'installateur de la version **JDK&nbsp;21** (64&nbsp;bits).
+3. Lancez l'installateur puis suivez les instructions jusqu'au bout.
+4. Une fois l'installation terminée, ouvrez un terminal (*Invite de commandes*) et tapez :
+
+   ```bash
+   java -version
+   ```
+
+   Vous devriez voir un numéro de version commençant par `21`.
+
+### Linux
+
+Selon votre distribution, utilisez votre gestionnaire de paquets préféré. Par exemple sur **Debian/Ubuntu** :
+
+```bash
+sudo apt-get install openjdk-21-jdk
+```
+
+Vérifiez ensuite la présence de Java avec `java -version`.
+
+### macOS
+
+Pour macOS, l'installation la plus simple passe par **Homebrew** :
+
+```bash
+brew install openjdk@21
+```
+
+Suivez ensuite les instructions affichées par Homebrew pour configurer votre environnement, puis contrôlez la version avec `java -version`.
+
+Une fois Java installé, vous êtes prêt à utiliser l'application.
+
 ## Prise en main rapide
 
 ```bash
@@ -13,6 +52,22 @@ java -jar target/demoloterie.jar
 ```
 
 Le projet nécessite Java 21 et Maven. Aucune base de données n'est requise, toutes les informations sont stockées dans des fichiers texte.
+
+## Téléchargement du JAR
+
+Si vous ne souhaitez pas compiler le projet vous-même, le dépôt contient déjà un fichier `demoloterie.jar` précompilé.
+
+1. Rendez-vous sur la page GitHub du projet.
+2. Cliquez sur le fichier `demoloterie.jar` puis sur le bouton **Download** afin de récupérer l'archive sur votre ordinateur.
+3. Placez le fichier dans un dossier de travail (évitez les emplacements avec des espaces pour simplifier).
+
+Une fois téléchargé, vous pouvez directement exécuter la loterie avec :
+
+```bash
+java -jar demoloterie.jar
+```
+
+La fenêtre principale devrait alors s'ouvrir. Vous n'avez plus qu'à renseigner des participants et à lancer la roue.
 
 ## Fonctionnalités principales
 
@@ -118,6 +173,23 @@ pom.xml           # configuration Maven
 ```
 
 Les classes sont regroupées dans le package `org.example`.
+
+## Tester l'application
+
+Pour vous familiariser avec la loterie, lancez simplement le JAR (soit celui que
+vous avez téléchargé, soit celui obtenu après la compilation). Une fenêtre
+s'ouvre avec plusieurs onglets :
+
+1. **Participants** : ajoutez quelques noms et les mises associées en
+   utilisant les boutons prévus à cet effet.
+2. **Gains** : saisissez la cagnotte et les objets éventuellement en jeu.
+3. **Roue** : configurez le nombre de tickets perdants dans le menu Options si
+   vous le souhaitez, puis cliquez sur *Lancer la roue*.
+4. Observez l'animation jusqu'à ce qu'un gagnant soit affiché dans l'onglet
+   **Résultat**. Chaque tirage est ensuite archivé dans l'onglet **Historique**.
+
+N'hésitez pas à effectuer plusieurs tirages pour vous entraîner. Toutes les
+données sont enregistrées dans `loterie-save.txt` entre chaque session.
 
 ## Licence
 
