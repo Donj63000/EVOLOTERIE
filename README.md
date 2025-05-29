@@ -1,6 +1,6 @@
 # EVOLOTERIE
 
-EVOLOTERIE est une petite application JavaFX simulant une loterie pour la guilde **EVOLUTION**. Elle permet d'entrer les participants avec leurs mises, de configurer les gains et d'animer une roue de la fortune pour déterminer un gagnant. Le projet a été conçu comme un exemple didactique.
+EVOLOTERIE est une petite application JavaFX simulant une loterie pour la guilde **EVOLUTION**(Made By Coca IG). Elle permet d'entrer les participants avec leurs mises, de configurer les gains et d'animer une roue de la fortune pour déterminer un gagnant. Le projet a été conçu comme un exemple didactique.
 
 ## Prise en main rapide
 
