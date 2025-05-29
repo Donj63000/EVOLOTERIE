@@ -103,42 +103,7 @@ Depuis l'application il est possible d'ouvrir la fenêtre **OptionRoue** pour aj
 
 Ces réglages sont conservés pour la session en cours et permettent de personnaliser la loterie à chaque utilisation.
 
-## Sauvegarde et historique
 
-Deux fichiers texte sont utilisés afin de persister les données :
-
-- `loterie-save.txt` : état courant (participants et objets et bonus). Les méthodes `Save.save` et `Save.reset` gèrent ce fichier.
-- `loterie-historique.txt` : liste datée des tirages (gérée par `Historique`).
-
-Extrait de la méthode `save` montrant le format très simple utilisé :
-
-```java
-    private static final Path FILE = Path.of("loterie-save.txt");
-
-    /* ---------- Sauvegarde ---------- */
-    public static void save(ObservableList<Participant> participants,
-                            ObservableList<String> objets,
-                            int extraKamas) throws IOException {
-
-        StringBuilder sb = new StringBuilder("#Participants\n");
-        for (Participant p : participants) {
-            // nom;kamas;don
-            sb.append(p.getName()).append(';')
-                    .append(p.getKamas()).append(';')
-                    .append(p.getDonation()).append('\n');
-        }
-
-        sb.append("#Objets\n");
-        for (String o : objets) {
-            sb.append(o).append('\n');
-        }
-
-        sb.append("#Bonus\n");
-        sb.append(extraKamas).append('\n');
-
-        Files.writeString(FILE, sb.toString());
-    }
-```
 
 ## Compilation
 
